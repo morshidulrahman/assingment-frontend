@@ -41,7 +41,7 @@ const UpdateUserForm = ({ params }) => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/updateusers/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/updateusers/${id}`,
         formData
       );
       if (data.modifiedCount > 0) {
