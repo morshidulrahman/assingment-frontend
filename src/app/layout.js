@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +25,22 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="container mx-auto px-4 py-5 flex justify-center items-center gap-4">
+          <Link
+            href={"/"}
+            className="py-2 px-3 rounded-md bg-blue-400 text-white"
+          >
+            Home
+          </Link>
+          <Link
+            href={"/allusers"}
+            className="py-2 px-3 rounded-md bg-blue-400 text-white"
+          >
+            Allusers
+          </Link>
+        </div>
         {children}
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
