@@ -19,7 +19,9 @@ const UpdateUserForm = ({ params }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/users/${id}`);
+        const { data } = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/users/${id}`
+        );
         setFormData(data);
         setLoading(false);
       } catch (error) {

@@ -10,7 +10,9 @@ const Allusers = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/users");
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/users`
+      );
       setusers(data);
       setLoading(false);
     } catch (error) {
@@ -19,9 +21,12 @@ const Allusers = () => {
   }, []);
   const updateUserStatus = async (id, status) => {
     try {
-      await axios.patch(`http://localhost:5000/statususers/${id}`, {
-        status,
-      });
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/statususers/${id}`,
+        {
+          status,
+        }
+      );
       fetchData();
     } catch (error) {
       console.error("Error updating user status", error);
@@ -30,7 +35,7 @@ const Allusers = () => {
 
   const Deleteusers = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/users/${id}`);
       fetchData();
     } catch (error) {
       console.error("Error updating user status", error);

@@ -22,7 +22,7 @@ const From = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/users/",
+        `${process.env.NEXT_PUBLIC_API_URL}/users`,
         formData
       );
       if (data.insertedId) {
